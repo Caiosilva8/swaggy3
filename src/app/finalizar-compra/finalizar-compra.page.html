@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Finalize sua compra</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-title>Complete sua Compra</ion-card-title>
+
+    <form [formGroup]="formGroup">
+      <ion-list>
+        <ion-label class="title">Finalize seu pedido</ion-label>
+        <ion-item>
+          <ion-label floating>Nome :</ion-label>
+          <ion-input formControlName="nome" type="text" placeholder="Nome" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Estado :</ion-label>
+          <ion-input formControlName="estado" type="text" placeholder="Estado" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Cidade :</ion-label>
+          <ion-input formControlName="cidade" type="text" placeholder="Cidade" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>CEP :</ion-label>
+          <ion-input formControlName="cep" type="text" placeholder="xxxxx-xxx" required [brmasker]="{form: formGroup.get('cep'), mask: '99999-999', len:9}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>CPF :</ion-label>
+          <ion-input formControlName="cpf" type="text" placeholder="xxx.xxx.xxx-xx" [brmasker]="{form: formGroup.get('cpf'), mask: '999.999.999-99', len:14}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Identidade :</ion-label>
+          <ion-input formControlName="identidade" type="text" placeholder="xx.xxx.xxx-xx" [brmasker]="{form: formGroup.get('identidade'), mask: '99.999.999-99', len:13}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Celular :</ion-label>
+          <ion-input formControlName="celular" type="text" placeholder="(xx) xxxxx-xxxx" [brmasker]="{form: formGroup.get('celular'), mask: '99 99999-9999', len:13}" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Bairro :</ion-label>
+          <ion-input formControlName="bairro" type="text" placeholder="Bairro"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Endereço :</ion-label>
+          <ion-input formControlName="endereco" type="text" placeholder="Endereço"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Número :</ion-label>
+          <ion-input formControlName="numero" type="number" placeholder="Nº"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Complemento :</ion-label>
+          <ion-input formControlName="complemento" type="text" placeholder="Aprt, Bloco, Casa..."></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Ponto de referência : </ion-label>
+          <ion-input formControlName="pontoR" type="text" placeholder="Ponto Referência"></ion-input>
+        </ion-item>
+        <ion-list>
+          <ion-radio-group>
+            <ion-list-header>
+              <ion-label>Metodo de pagamento</ion-label>
+            </ion-list-header>
+        
+            <ion-item>
+              <ion-icon name="card"></ion-icon><ion-label> Cartão de Crédito</ion-label>
+              <ion-radio slot="start" value="biff" checked formControlName="cartao" (click)="alterarTipoPagamento(1)"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-icon name="card"></ion-icon><ion-label> Cartão de Débito</ion-label>
+              <ion-radio slot="start" value="griff" formControlName="dinheiro" (click)="alterarTipoPagamento(1)"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+
+
+      </ion-list>
+      <ion-button color="dark" fill="outline" (click)="atualizar()">Finalizar</ion-button>
+      <ion-button color="danger" fill="outline" (click)="cancelar()">Cancelar</ion-button>
+    </form>
+
+  </ion-card>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Carrinho</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let pedido of pedido.itens">
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+              <img src="{{pedido?.produto.foto}}" class="img">
+          </ion-col>
+          <ion-col>
+              <ion-card-title>{{pedido?.produto.nomeProduto}}</ion-card-title>
+              <ion-card-title class="t">R$ {{pedido?.produto.preco}}</ion-card-title>
+              <ion-button color="danger" (click)="removeCar(pedido?.produto)" class="t"><ion-icon name="trash"></ion-icon></ion-button>
+          </ion-col>
+         
+        </ion-row>
+      </ion-grid>
+</ion-card>
+
+
+
+  <h5>Total: R$: {{total}},00</h5>
+
+  <h5>Total de Pontos : {{pontoR}}</h5>
+
+  <ion-list>
+    <h5>Pontos a descontar</h5>
+      <ion-label floating></ion-label>
+      <ion-input type="number" placeholder="Ex: '10.4' "></ion-input>
+    </ion-list>
+
+
+  <div class="button">
+    <ion-button color="dark" fill="outline" (click)="finalizar()">Finalizar Compra</ion-button>
+    <ion-button color="dark" fill="outline" (click)="index()">Continuar Comprando</ion-button>
+  </div>
+</ion-content>

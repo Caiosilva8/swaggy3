@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Atualizar Produto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <img src="{{imagem}}">
+  
+    <ion-item>
+      <input type="file" (change)="enviaArquivo($event)" />
+    </ion-item>
+  
+      <form [formGroup]="formGroup">
+        <ion-list>
+          <ion-item>
+            <ion-label floating>Nome</ion-label>
+            <ion-input formControlName="nomeProduto" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Preço</ion-label>
+            <ion-input formControlName="preco" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Categoria</ion-label>
+            <ion-input formControlName="categoria" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>Descrição</ion-label>
+              <ion-input formControlName="descricao" type="text"></ion-input>
+            </ion-item>
+        </ion-list>
+        
+        <ion-button expand="full" (click)="atualizar()">Atualizar</ion-button>
+      </form>
+    </ion-content>
+  

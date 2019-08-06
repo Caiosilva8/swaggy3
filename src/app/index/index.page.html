@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button name="menu" size="large" id="menu" (click)="menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-icon name="contact" size="large" id="market" (click)="perfil()"></ion-icon>
+    <img src="../../assets/img/Logo.png" height="60" width="60" class="icon">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row>
+    <ion-searchbar #textoBusca animated placeholder="Procurar" (ionChange)="busca()"></ion-searchbar>
+  </ion-row>
+
+  <ion-slides pager="true" autoplay="true" [options]="slideOpts">
+    <ion-slide>
+      <ion-img src="../../assets/img/eg.jpg"></ion-img>
+    </ion-slide>
+    <ion-slide>
+      <ion-img src="../../assets/img/b.jpg"></ion-img>
+    </ion-slide>
+    <ion-slide>
+      <ion-img src="../../assets/img/d.jpg"></ion-img>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-fab vertical="top" horizontal="end">
+    <ion-fab-button (click)="carrinho()">
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-grid>
+    <ion-row>
+      <ion-slides pager="true" [options]="slideOpts1">
+        <ion-slide >
+          <ion-tab-button tab="schedule" (click)="att('Jaqueta')" class="cat">
+            <img src="../../assets/img/hooded-jacket.png" class="cat" />
+            <ion-label>Casacos</ion-label>
+          </ion-tab-button>
+        </ion-slide>
+        <ion-slide>
+          <ion-tab-button tab="speakers" (click)="att('Tenis')">
+            <img src="../../assets/img/shoe2.png" class="cat" />
+            <ion-label>Tênis</ion-label>
+          </ion-tab-button>
+        </ion-slide>
+        <ion-slide>
+          <ion-tab-button tab="speakers" (click)="att('Acessórios')">
+            <img src="../../assets/img/cap.png" class="cat" />
+            <ion-label>Bonés</ion-label>
+          </ion-tab-button>
+        </ion-slide>
+        <ion-slide>
+          <ion-tab-button tab="speakers" (click)="att('Camisas')">
+            <img src="../../assets/img/cotton-polo-shirt.png" class="cat" />
+            <ion-label>Camisas</ion-label>
+          </ion-tab-button>
+        </ion-slide>
+        <ion-slide>
+          <ion-tab-button tab="speakers" (click)="att('Calças')">
+            <img src="../../assets/img/chinos-pants.png"  class="cat"/>
+            <ion-label>Calças</ion-label>
+          </ion-tab-button>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-card class="coin">
+    <img src="../../assets/img/coins.png" class="pts">
+    <ion-card-title>Card Subtitle</ion-card-title>
+  </ion-card>
+  <ion-card class="coin">
+    <img src="../../assets/img/localization.png">
+  </ion-card>-->
+
+  <ion-card *ngFor="let produto of listaDeProdutos">
+    <ion-card-header>
+      <img src="{{produto?.foto}}" class="aa">
+      <ion-card-title>{{produto?.nomeProduto}}</ion-card-title>
+      <ion-card-subtitle>R$ {{produto?.preco}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-button fill="outline" slot="end" (click)="addCarrinho(produto)">Adicionar</ion-button>
+  </ion-card>
+
+  <!-- fab placed in the center of the content with a list on each side -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" id="fab">
+    <ion-fab-button>
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="facebook()">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="instagram()">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="twitter()">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-footer>
+    <ion-toolbar>
+      <b>Swaggy Multimarcas ©</b>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-content>

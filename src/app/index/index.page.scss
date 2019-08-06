@@ -1,0 +1,73 @@
+.footer {
+    bottom:0;
+    width:100%;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+}
+
+ion-col{
+    position: center;
+}
+
+ion-icon{
+    position: relative;
+}
+.cart{
+    //background-image:url("../../assets/img/cart.png");
+    width: 50px;
+    height: 50px;
+}
+
+ion-card {
+    text-align: center;
+}
+
+#menu {
+    float: left;
+}
+#market {
+    float: right;
+    height: 60px;
+}
+
+.icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ion-slides{
+    height: 150px;
+}
+
+.aa{
+    height: 200px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tp{
+    height : 150px;
+    width : 150px;
+}
+ion-card-subtitle{
+    font-weight: bold;
+    font-size: 15px;
+}
+.cat{
+    width: 80px;
+    height: 80px;
+}
+
+.coin{
+    margin: 5px;
+    width: 190px;
+    height: 190px;
+    display: inline-block;
+}
+.pts{
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
