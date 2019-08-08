@@ -1,7 +1,7 @@
 import { Pedido } from './../model/pedido';
 import { StorageService } from './../service/storage.service';
 import { Produto } from './../model/produto';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { FirebaseAuth } from '@angular/fire';
@@ -13,6 +13,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./carrinho.page.scss'],
 })
 export class CarrinhoPage implements OnInit {
+
+  @ViewChild('totPontos') totPontos;
 
   pedido: Pedido = new Pedido();
   total: number = 0;
@@ -26,6 +28,8 @@ export class CarrinhoPage implements OnInit {
     public router: Router,
     public firebaseauth: AngularFireAuth) {
 
+
+      
     this.firebaseauth.authState.subscribe(obj => {
 
       this.idUsuario = this.firebaseauth.auth.currentUser.uid;
@@ -68,8 +72,11 @@ export class CarrinhoPage implements OnInit {
   }
 
   finalizar() {
-    this.router.navigate(['finalizar-compra']);
+
+    let debPontos = this.pontoR;
+    this.router.navigate(['finalizar-compra',{'totPontos' : debPontos}]);
   }
+
 
 
 }

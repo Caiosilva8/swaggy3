@@ -15,6 +15,7 @@ export class PerfilPage implements OnInit {
 
   idUsuario : string;
   pontoR : number = 0;
+  pontoPerfil : number = 0;
   usuarioEmail : string;
   perfil : Perfil = new Perfil();
   picture : string = "../../assets/img/usuario.png";
@@ -33,13 +34,14 @@ export class PerfilPage implements OnInit {
     this.firebaseauth.authState.subscribe(obj=>{
       
       this.idUsuario = this.firebaseauth.auth.currentUser.uid;
+      console.log( this.idUsuario)
       this.usuarioEmail = this.firebaseauth.auth.currentUser.email;
       this.downloadFoto();
 
-      let ref = this.firestore.collection('perfil/').doc(this.idUsuario)
+      let ref = this.firestore.collection('perfil').doc(this.idUsuario)
       ref.get().then(doc=> {
           this.perfil.setDados(doc.data());
-          
+          this.pontoPerfil = parseFloat(doc.data().pontosR)
       });
 
 
@@ -47,8 +49,11 @@ export class PerfilPage implements OnInit {
       let reff = this.firestore.collection('finalizar').where("user","==",this.idUsuario)
       reff.get().then(query=>{
         query.forEach(doc=>{
-          this.pontoR += doc.data().pontoR;
+          this.pontoR += parseFloat(doc.data().pontoR);
         })
+        this.pontoR = this.pontoPerfil - this.pontoR;
+        console.log("pontoR " + this.pontoR)
+        console.log("pontoPerfil " + this.pontoPerfil)
       })
     });
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ToastController, LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Perfil } from '../model/perfil';
 import { StorageService } from '../service/storage.service';
@@ -23,12 +23,15 @@ export class FinalizarCompraPage implements OnInit {
   formGroup : FormGroup;
   tipoPagamento : string = "Cartão de Crédito";
   pedido : Pedido = new Pedido();
+  debPontos;
+
   constructor(public formBuilder : FormBuilder,
               public toastController : ToastController,
               public router : Router,
               public loadingController : LoadingController,
               public firebaseauth : AngularFireAuth,
-              public storageServ : StorageService,) {
+              public storageServ : StorageService,
+              public activatedRoute : ActivatedRoute) {
                 this.pedido = this.storageServ.getCart();
 
                 this.firebaseauth.authState.subscribe(obj=>{
@@ -52,6 +55,8 @@ export class FinalizarCompraPage implements OnInit {
                     
                 });
                 this.formulario();
+
+                this.debPontos = this.activatedRoute.snapshot.paramMap.get('produto');
     
    }
 
@@ -71,7 +76,7 @@ export class FinalizarCompraPage implements OnInit {
       cidade : [],
       estado : [],
       nome : [],
-      pontoR : [],
+      pontoR : [this.debPontos],
       user : [this.idUsuario],
       tipoPagamento : [this.tipoPagamento],
       produtos :[this.pedido]
@@ -108,6 +113,7 @@ export class FinalizarCompraPage implements OnInit {
     ref.add(this.formGroup.value)
     .then(()=>{
       this.toast('Sucesso!');
+      this.descontar();
       this.router.navigate(['finalizar-compra2']);
       this.loadingController.dismiss();
       this.storageServ.limpaCarrinho();
@@ -135,5 +141,13 @@ export class FinalizarCompraPage implements OnInit {
   cancelar(){
     this.router.navigate(['carrinho']);
   }
+
+  descontar(){
+    
+   
+      this.atualizar();
+
+  }
+
 }
 
