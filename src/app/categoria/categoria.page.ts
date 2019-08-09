@@ -47,6 +47,10 @@ export class CategoriaPage implements OnInit {
     })
 
 }
+carrinho(){
+  this.router.navigate(['carrinho']);
+}
+
 
 getList() {
   var ref = firebase.firestore().collection("produto");
@@ -68,8 +72,14 @@ getList() {
   });
 };
 
-voltar(){
-  this.router.navigate(['index']);
-}
 
+cart(){
+  this.router.navigate(['carrinho'])
+}
+home(){
+  this.router.navigate(['index'])
+}
+perfil(){
+  this.router.navigate(['perfil'])
+}
 }

@@ -40,8 +40,9 @@ export class PerfilPage implements OnInit {
 
       let ref = this.firestore.collection('perfil').doc(this.idUsuario)
       ref.get().then(doc=> {
+
           this.perfil.setDados(doc.data());
-          this.pontoPerfil = parseFloat(doc.data().pontosR)
+          this.pontoPerfil = parseFloat(doc.data().pontos)
       });
 
 

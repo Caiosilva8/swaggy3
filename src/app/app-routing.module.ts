@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'produto', loadChildren: './produto/produto.module#ProdutoPageModule' },
   { path: 'cadastro-de-produtos', loadChildren: './cadastro-de-produtos/cadastro-de-produtos.module#CadastroDeProdutosPageModule' },
   { path: 'lista-de-produtos', loadChildren: './lista-de-produtos/lista-de-produtos.module#ListaDeProdutosPageModule' },
-  { path: 'carrinho', loadChildren: './carrinho/carrinho.module#CarrinhoPageModule' },  { path: 'cliente-view', loadChildren: './cliente-view/cliente-view.module#ClienteViewPageModule' },
+  { path: 'carrinho', loadChildren: './carrinho/carrinho.module#CarrinhoPageModule' },
+  { path: 'cliente-view', loadChildren: './cliente-view/cliente-view.module#ClienteViewPageModule' },
   { path: 'produto-view', loadChildren: './produto-view/produto-view.module#ProdutoViewPageModule' },
   { path: 'categoria', loadChildren: './categoria/categoria.module#CategoriaPageModule' },
   { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
@@ -31,7 +32,10 @@ const routes: Routes = [
   { path: 'loja-pontos', loadChildren: './loja-pontos/loja-pontos.module#LojaPontosPageModule' },
   { path: 'finalizar-compra', loadChildren: './finalizar-compra/finalizar-compra.module#FinalizarCompraPageModule' },
   { path: 'deletar', loadChildren: './deletar/deletar.module#DeletarPageModule' },
-  { path: 'finalizar-compra2', loadChildren: './finalizar-compra2/finalizar-compra2.module#FinalizarCompra2PageModule' }
+  { path: 'finalizar-compra2', loadChildren: './finalizar-compra2/finalizar-compra2.module#FinalizarCompra2PageModule' },
+  { path: 'favoritos', loadChildren: './favoritos/favoritos.module#FavoritosPageModule' },
+  { path: 'cupom', loadChildren: './cupom/cupom.module#CupomPageModule' },
+  { path: 'quem-somos', loadChildren: './quem-somos/quem-somos.module#QuemSomosPageModule' }
 
 
 

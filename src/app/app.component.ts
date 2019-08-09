@@ -40,6 +40,18 @@ export class AppComponent {
       title: 'Trocar Pontos',
       url: '/loja-pontos',
       icon: 'sync'
+    },{
+      title: 'Visualizar Perfil',
+      url: '/perfil',
+      icon: 'contact'
+    },{
+      title: 'Cupom',
+      url: '/cupom',
+      icon: 'folder-open'
+    },{
+      title: 'Quem Somos',
+      url: '/quem-somos',
+      icon: 'book'
     }
   ];
 

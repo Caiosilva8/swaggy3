@@ -115,12 +115,14 @@ export class ListaDeProdutosPage implements OnInit {
   async openActionSheet(id : string) {
     const actionSheet = await this.actionSheetController.create({
       header: 'Albums',
+      mode: 'ios',
       buttons: [{
         text: 'Delete',
         role: 'destructive',
         icon: 'trash',
         handler: () => {
           this.router.navigate(['/deletar', {'produto' : id}]);
+        
         }
       }, {
         text: 'Atualizar',

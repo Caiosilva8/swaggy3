@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from '../model/produto';
 import * as firebase from 'firebase';
-import { LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { Router, ActivatedRoute } from '@angular/router';
+import { StorageService } from '../service/storage.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-deletar',
@@ -14,22 +16,31 @@ export class DeletarPage implements OnInit {
   listaDeProdutos : Produto[] = [];
   id : string;
 
-  constructor(public loadingController : LoadingController,
-              public router : Router) { }
+  constructor(public activatedRoute : ActivatedRoute,
+    public router : Router,
+    public nav : NavController,
+    public toastController : ToastController,
+    public loadingController : LoadingController) {
 
-  ngOnInit() {
-  }
 
-  remove(obj : Produto){
+this.id = this.activatedRoute.snapshot.paramMap.get('produto');
+}
+
+ngOnInit() { 
+}
+
+    remove(){
     var ref = firebase.firestore().collection("produto");
-    ref.doc(obj.id).delete()
+    ref.doc(this.id).delete()
       .then(()=>{
         this.listaDeProdutos = [];
         this.getList();
       }).catch(()=>{
         console.log('Erro ao atualizar');
+        this.router.navigate
       })
   }
+
 
   getList(){
     this.loading()
@@ -39,17 +50,6 @@ export class DeletarPage implements OnInit {
         let c = new Produto();
         c.setDados(doc.data());
         c.id = doc.id;
-
-
-        //let ref = firebase.storage().ref().child(`produtos/${doc.id}.jpg`).getDownloadURL().then(url => {
-          //c.foto = url;
-          //this.listaDeProdutos.push(c);
-        //}).catch(err=>{
-          //this.listaDeProdutos.push(c);
-        //});
-
-        
-
       });
       console.log("Lista " +this.listaDeProdutos)
       this.loadingController.dismiss();
@@ -68,3 +68,5 @@ export class DeletarPage implements OnInit {
     this.router.navigate(['/lista-de-produtos']);
   }
 }
+
+
